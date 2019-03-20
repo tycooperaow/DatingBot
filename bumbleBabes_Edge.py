@@ -21,12 +21,20 @@ class BumbleBot:
            driver.get("https://www.facebook.com/")
            time.sleep(3)
            driver.get('https://bumble.com/app')
-           
+
     def testing_luck(self):
          driver = self.driver
+         feelings = random.randint(0,1)
+         read_profile = random.uniform(0.5, 3)
          presentation = driver.find_element_by_xpath("//div[contains(@class, 'encounters-action encounters-action--like')]")
-         time.sleep(1)
-         presentation.click()
+         conceded = driver.find_element_by_xpath("//div[contains(@class, 'encounters-action encounters-action--dislike')]")
+         if feelings == 1:
+             time.sleep(read_profile)
+             presentation.click()
+         elif feelings == 0:
+             time.sleep(read_profile)
+             conceded.click()
+
 
 myPassword = os.environ.get('facee_pass')
 bumbleBabes = BumbleBot()
